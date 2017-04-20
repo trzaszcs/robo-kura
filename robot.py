@@ -37,7 +37,16 @@ def distance_sensor_test():
 
     except IOError:
         print ("Error")
- 
+
+def motion_sensor():
+ motion_sensor_pin = gopigo.digitalPort
+ gopigo.pinMode(motion_sensor_pin,"INPUT")
+ while True:
+   try:
+     print (gopigo.digitalRead(motion_sensor_pin))
+     time.sleep(.5)
+   except IOError:
+     print ("Error") 
 
 print("start")
 enable_com_timeout(2000)
