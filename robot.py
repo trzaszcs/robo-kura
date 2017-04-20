@@ -18,6 +18,7 @@ def sensor():
         print ("Error")
 
 print("start")
+enable_com_timeout(2000)
 while True:
  hello()
  break
