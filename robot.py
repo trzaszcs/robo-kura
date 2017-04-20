@@ -8,10 +8,10 @@ def hello():
  stop()
 
 def sensor():
-  distance_sensor_pin = gopigo.analogPort
+  distance_sensor_pin = analogPort
   while True:
     try:
-        print (gopigo.us_dist(distance_sensor_pin))
+        print (us_dist(distance_sensor_pin))
         time.sleep(.5)
 
     except IOError:
