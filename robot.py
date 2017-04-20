@@ -17,7 +17,7 @@ def distance_sensor():
     except IOError:
         print ("Error")
 
-def dziob()
+def dziob():
  enable_servo()
  servo(80)
  time.sleep(0.3)
