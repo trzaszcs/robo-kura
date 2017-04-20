@@ -20,6 +20,6 @@ def sensor():
 print("start")
 enable_com_timeout(2000)
 while True:
- hello()
+ sensor()
  break
 print("end")
