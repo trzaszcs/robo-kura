@@ -17,6 +17,13 @@ def distance_sensor():
     except IOError:
         print ("Error")
 
+def dziob()
+ enable_servo()
+ servo(80)
+ time.sleep(0.3)
+ servo(25)
+ time.sleep(1)
+
 def distance_sensor_test():
   distance_sensor_pin = analogPort
   while True:
