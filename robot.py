@@ -9,10 +9,11 @@ def hello():
 
 def cumshot():
  camera = PiCamera()
- camera.resolution = (1024, 768)
+ camera.resolution = (48, 32)
+ camera.color_effects = (128,128)
  camera.start_preview()
  # Camera warm-up time
- time.sleep(2)
+ # time.sleep(2)
  camera.capture('foo.jpg')
 
 def distance_sensor():
@@ -63,6 +64,7 @@ def motion_sensor():
 
 print("start")
 enable_com_timeout(2000)
+hello()
 dziob()
 cumshot()
 print("end")
