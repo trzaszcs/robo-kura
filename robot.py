@@ -68,6 +68,22 @@ def cumshot_rgb():
  print(stream.array.shape)
  print(stream.array) 
 
+def ddd_to_arr(ddd):
+  
+  def color_to_bin(rgb):
+    (r,g,b) = rgb
+    lumi = (0.21 * r) + (0.72 * g) + (0.07 * b)
+    if (lumi > 150) :
+      return 0
+    return 1
+    
+  arr = []
+  for row in ddd:
+    for color in row:
+      arr.append(color_to_bin(color))
+      
+  return arr
+
 def distance_sensor():
   distance_sensor_pin = analogPort
   while True:
