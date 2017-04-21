@@ -1,6 +1,6 @@
 from gopigo import *
 import time
-from picamera import PiCamera
+from picamera import PiCamera,array
 
 def run():
  distance_sensor_pin = analogPort
@@ -57,7 +57,7 @@ def cumshot():
  # time.sleep(2)
  camera.capture('foo.jpg')
 
-def cumstot_rgb():
+def cumshot_rgb():
  camera = PiCamera()
  stream = array.PiRGBArray(camera)
  camera.resolution = (48, 32)
