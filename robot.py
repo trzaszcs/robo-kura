@@ -81,17 +81,26 @@ def cumshot_rgb():
 
 def ddd_to_int(ddd):
   
-  def color_to_bin(rgb):
+  def color_to_lumi(rgb):
     (r,g,b) = rgb
-    lumi = (0.21 * r) + (0.72 * g) + (0.07 * b)
-    if (lumi > 150) :
-      return 0
-    return 1
-    
-  arr = []
+    return (0.21 * r) + (0.72 * g) + (0.07 * b)
+  
+  def avg(arr):
+    def sum(arr):
+        return reduce(lambda a, b: a + b, arr)
+    return sum(arr) / len(arr)
+
+  lumi_arr = []
   for row in ddd:
     for color in row:
-      arr.append(color_to_bin(color))
+      lumi_arr.append(color_to_lumi(color))
+  thr = avg(lumi_arr)
+  arr = []
+  for y in lumi_arr:
+    if y <= thr:
+      arr.append(0)
+    else:
+      arr.append(1)
   sum = reduce(lambda x,y: x+y, arr) 
   print(sum)
   single = len(arr)/3
