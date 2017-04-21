@@ -57,6 +57,17 @@ def cumshot():
  # time.sleep(2)
  camera.capture('foo.jpg')
 
+def cumstot_rgb():
+ camera = PiCamera()
+ stream = array.PiRGBArray(camera)
+ camera.resolution = (48, 32)
+ camera.start_preview()
+ time.sleep(2)
+ camera.capture(stream, 'rgb')
+ print("RGB RGB")
+ print(stream.array.shape)
+ print(stream.array) 
+
 def distance_sensor():
   distance_sensor_pin = analogPort
   while True:
