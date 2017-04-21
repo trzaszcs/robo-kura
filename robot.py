@@ -49,9 +49,9 @@ def ann():
  dataset = network_helper.create_dataset()
  network = network_helper.create_network(dataset)
  network = network_helper.train_network(network, dataset)
- print(network_helper.test_network(network, [0,0])[0])
- print(network_helper.test_network(network, [1,1])[0])
- print(network_helper.test_network(network, [0,1])[0])
+ print(network_helper.test_network(network, [0,0]))
+ print(network_helper.test_network(network, [1,1]))
+ print(network_helper.test_network(network, [0,1]))
 
 def hello():
  forward()
@@ -70,15 +70,16 @@ def cumshot():
 def cumshot_rgb():
  camera = PiCamera()
  stream = array.PiRGBArray(camera)
- camera.resolution = (48, 32)
+ camera.resolution = (32, 32)
  camera.start_preview()
  time.sleep(2)
  camera.capture(stream, 'rgb')
  print("RGB RGB")
  print(stream.array.shape)
- print(stream.array) 
+ print(ddd_to_int(stream.array)) 
+ return ddd_to_int(stream.array)
 
-def ddd_to_arr(ddd):
+def ddd_to_int(ddd):
   
   def color_to_bin(rgb):
     (r,g,b) = rgb
@@ -91,8 +92,14 @@ def ddd_to_arr(ddd):
   for row in ddd:
     for color in row:
       arr.append(color_to_bin(color))
-      
-  return arr
+  sum = reduce(lambda x,y: x+y, arr) 
+  print(sum)
+  single = len(arr)/3
+  if (sum <= single):
+   return 0
+  if (sum > single and sum <= 2*single):
+   return 1
+  return 2
 
 def distance_sensor():
   distance_sensor_pin = analogPort
@@ -144,6 +151,6 @@ print("start")
 enable_com_timeout(2000)
 hello()
 dziob()
-ann()
-cumshot()
+#ann()
+cumshot_rgb()
 print("end")
