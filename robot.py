@@ -49,6 +49,9 @@ def ann():
  dataset = network_helper.create_dataset()
  network = network_helper.create_network(dataset)
  network = network_helper.train_network(network, dataset)
+ print(network_helper.test_network(network, [0,0])[0])
+ print(network_helper.test_network(network, [1,1])[0])
+ print(network_helper.test_network(network, [0,1])[0])
 
 def hello():
  forward()
@@ -141,5 +144,6 @@ print("start")
 enable_com_timeout(2000)
 hello()
 dziob()
+ann()
 cumshot()
 print("end")
