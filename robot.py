@@ -2,6 +2,47 @@ from gopigo import *
 import time
 from picamera import PiCamera
 
+def run():
+ distance_sensor_pin = analogPort
+ enable_servo()
+ 
+ def dist():
+   return us_dist(distance_sensor_pin)
+ 
+ def dziob():
+  servo(80)
+  time.sleep(0.3)
+  servo(25)
+  time.sleep(1)
+  servo(80)
+  time.sleep(0.3)
+  servo(0)
+ 
+ def step_forward():
+  foward()
+  time.sleep(.5)
+  stop()
+
+ def step_left():
+   left()
+   time.sleep(.5)
+   stop()
+ 
+ def step_right():
+   right()
+   time.sleep(.5)
+   stop()
+
+ # START LOOP
+ step_forward()
+ while True:
+  current_dist = dist()
+  if current_dist > 20:
+    dziob()
+    step_forward()
+  else:
+    step_left()
+ 
 def hello():
  forward()
  time.sleep(.5)
