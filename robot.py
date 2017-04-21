@@ -1,3 +1,4 @@
+from networkhelper import NetworkHelper
 from gopigo import *
 import time
 from picamera import PiCamera,array
@@ -42,7 +43,13 @@ def run():
     step_forward()
   else:
     step_left()
- 
+
+def ann():
+ network_helper = NetworkHelper()
+ dataset = network_helper.create_dataset()
+ network = network_helper.create_network(dataset)
+ network = network_helper.train_network(network, dataset)
+
 def hello():
  forward()
  time.sleep(.5)
